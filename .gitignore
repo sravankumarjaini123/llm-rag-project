@@ -1,8 +1,11 @@
-# Secrets — NEVER commit these
+# Git
+.git
+.gitignore
+
+# Secrets
 .env
 *.env
 .env.*
-!.env.example
 
 # Python
 __pycache__/
@@ -15,19 +18,30 @@ env/
 *.egg-info/
 .pytest_cache/
 
-# ChromaDB local store
+# Chroma vector DB
 chroma/
 .chroma/
+backend/chroma/
 
-# Uploaded files
-uploads/*
-!uploads/.gitkeep
+# Uploaded docs
+uploads/
+backend/uploads/
 
 # IDE
 .vscode/
 .idea/
 *.swp
+
+# OS
 .DS_Store
+Thumbs.db
 
 # Logs
 *.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Jenkins / docs
+Jenkinsfile
+README.md

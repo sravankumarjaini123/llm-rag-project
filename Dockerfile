@@ -17,6 +17,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     curl \
+    gcc \
     && rm -rf /var/lib/apt/lists/*
 
 # Working directory inside the container
@@ -27,8 +28,7 @@ WORKDIR /app
 # CPU-only torch is pulled via the --extra-index-url in requirements.txt.
 COPY backend/requirements.txt .
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt && \
-    rm -rf /root/.cache
+    pip install --no-cache-dir -r requirements.txt
 
 # Copy backend application code
 COPY backend/ ./backend/
