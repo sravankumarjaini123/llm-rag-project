@@ -12,7 +12,7 @@ pipeline {
         IMAGE_TAG      = "${env.BUILD_NUMBER}"
         EC2_HOST       = credentials('EC2_HOST')          // e.g. ubuntu@1.2.3.4
         OPENAI_API_KEY = credentials('OPENAI_API_KEY')    // Jenkins secret
-        DOCKERHUB_USER = "excelr"                         // Your Docker Hub username
+        DOCKERHUB_USER = "sravanjaini02"                  // Your Docker Hub username
     }
 
     stages {
