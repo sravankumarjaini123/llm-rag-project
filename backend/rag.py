@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import os
+from dotenv import load_dotenv
 
 # pdf reader is the predefined class
 # pdfreader used to read the data from pdf file
@@ -15,6 +16,7 @@ import chromadb
 # Openapi,used to generate the AI output
 from openai import OpenAI
 
+load_dotenv()
 
 # LOAD EMBEDDING MODEL
 # model, will do Tokenization,Token id,and generated embeddings (vectors
@@ -64,7 +66,7 @@ def search_query(question):
 
 # generate output
 def generate_answer(question,context):
-    api_key = os.getenv("OPEN_API_KEY")
+    api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError(
             "OPENAI_API_KEY environment variable not set. "
