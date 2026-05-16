@@ -94,3 +94,5 @@ def view_data():
         "total_chunks": len(data["documents"]),
         "documents": data["documents"]
     }
+
+### by Sravan Kumar Jaini ###
