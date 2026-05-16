@@ -10,7 +10,8 @@ pipeline {
     environment {
         IMAGE_NAME     = "llm-rag-app"
         IMAGE_TAG      = "${env.BUILD_NUMBER}"
-        EC2_HOST       = credentials('EC2_HOST')          // e.g. ubuntu@1.2.3.4
+        // EC2_HOST       = credentials('EC2_HOST')
+        EC2_HOST       = "54.206.121.220"          // e.g. ubuntu@1.2.3.4
         OPENAI_API_KEY = credentials('OPENAI_API_KEY')    // Jenkins secret
         DOCKERHUB_USER = "sravanjaini02"                  // Your Docker Hub username
     }
@@ -75,7 +76,7 @@ pipeline {
             steps {
                 sshagent(credentials: ['ec2-ssh-key']) {
                     sh '''
-                        ssh -o StrictHostKeyChecking=no $EC2_HOST "
+                         ssh -o StrictHostKeyChecking=no ubuntu@$EC2_HOST "
                             docker pull ${DOCKERHUB_USER}/${IMAGE_NAME}:latest &&
                             docker stop llm-rag || true &&
                             docker rm   llm-rag || true &&
