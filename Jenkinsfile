@@ -96,6 +96,10 @@ pipeline {
     post {
         success { echo "Deployed build #${env.BUILD_NUMBER} successfully" }
         failure { echo "Build #${env.BUILD_NUMBER} failed — check logs" }
-        always  { sh 'docker image prune -f || true' }
+        always {
+            sh '''
+                docker system prune -a -f --volumes || true
+            '''
+        }
     }
 }
